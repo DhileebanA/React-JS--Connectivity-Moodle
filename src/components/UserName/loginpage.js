@@ -14,27 +14,27 @@ export function LoginPage() {
             username:user,
             password:pass
         }
-        if(user==='' && pass===''){
-            alert("Please Enter your Username and Password")
-        }
-        else if(user===''){ 
+        // if(user=='' && pass==''){
+        //     alert("Please Enter your Username and Password")
+        // }
+        if(user==''){ 
             alert("Please Enter your Username")
         }
-        else if(pass===''){ 
+        else if(pass==''){ 
             alert("Please Enter your Password")
         }
         else{
-            axios.post('https://localhost:3005/userdb',key)
+            axios.post('http://localhost:3005/userdb',key)
             .then((res)=>{
                 if(res.data.status==="empty"){
                     alert("Finish your Registration first")
                 }
                 else if(res.data.status==="success"){
                     alert("Successfully Logged in")
-                    window.location.href='/dashboard'
+                    window.location.href=`/dashboard/${res.data.id}`
                 }
-                else if(res.data.status==="invalid_pass"){
-                    alert("Check your Password")
+                else if(res.data.status==="error"){
+                    alert("Check your Username and Password")
                 }
                 else if(res.data.status==="invalid"){
                     alert("Finish your registration first")
@@ -42,7 +42,9 @@ export function LoginPage() {
                 else if(res.data.status==="error"){
                     alert("Finish your registration first")
                 }
-                else("Contact admin")
+                else{
+                    alert("Contact admin")
+                }
             })
         }
     }

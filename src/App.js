@@ -25,6 +25,7 @@ import { GetUserData } from './components/UserName/getUser';
 import { LoginPage } from './components/UserName/loginpage';
 import { GetSingleData } from './components/Node Connect/EmpDetail/singleData';
 import { Dashboard } from './components/UserName/dashboard';
+import { UpdateUserData } from './components/UserName/update';
 
 function App(){
   return (
@@ -51,7 +52,8 @@ function App(){
         <Route path='/singledata/:empno' element={[<Menu/>,<GetSingleData/>]}/>
         <Route path='/getUser' element={[<Menu/>,<GetUserData/>]}/>
         <Route path='/loginpage' element={[<Menu/>,<LoginPage/>]}/>
-        <Route path='/dashboard' element={[<Menu/>,<Dashboard/>]}/>
+        <Route path='/dashboard/:id' element={[<Menu/>,<Dashboard/>]}/>
+        <Route path='/updateProfile/:id' element={[<Menu/>,<UpdateUserData/>]}/>
       </Routes>
     </BrowserRouter>
     </>
